@@ -21,3 +21,4 @@
 
 * General config file cleanup (especially i3)
 * Remove specific file location refrences
+* Perfect terminal colors
