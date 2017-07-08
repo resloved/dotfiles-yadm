@@ -1,0 +1,321 @@
+[colors]
+
+overline-color = #bc92f8
+underline-color = #bc92f8
+
+black      = #000000
+white	   = #ffffff
+lightgrey  = #8A8A8A
+mediumgrey = #444444
+darkgrey   = #1b1d1e
+blue       = #0087af
+green      = #7baa14
+orange     = #d75f00
+
+background = #262626
+background-alt = #2E2E2E
+foreground = #FFFFFF
+foreground-alt = #555555
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[bar/main_bar]
+width = 100%
+height = 19
+bottom=true
+
+monitor = ${env:MONITOR}
+
+background = ${colors.darkgrey}
+foreground = ${colors.foreground}
+
+font-0 = PowerlineSymbols:size=16;4
+font-1 = FontAwesome:size=10;3
+font-2 = Source Code Pro:weight=bold:size=10;3
+font-3 = Terminus:size=10;2
+font-4 = Source Code Pro:weight=light:size=10;3
+font-5 = Source Code Pro:weight=semibold:size=10;3
+
+modules-left = xwindow bluearrowright
+modules-center = music
+modules-right = pkg mediumarrow date clock lightarrow i3
+
+;tray-position = right
+tray-transparent = false
+tray_detached = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 0
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:50:...%
+label-background = ${colors.blue}
+label-foreground = ${colors.foreground}
+label-font = 1
+label-padding = 1
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-mode = "●"
+label-mode-padding = 1
+label-mode-font = 3
+label-mode-foreground = ${colors.darkgrey}
+label-mode-background = ${colors.lightgrey}
+
+label-focused = "●"
+label-focused-padding = 1
+label-focused-font = 3
+label-focused-foreground = ${colors.darkgrey}
+label-focused-background = ${colors.lightgrey}
+
+label-unfocused = "○"
+label-unfocused-padding = 1
+label-unfocused-font = 3
+label-unfocused-foreground = ${colors.darkgrey}
+label-unfocused-background = ${colors.lightgrey}
+
+label-urgent = "●"
+label-urgent-padding = 1
+label-urgent-font = 3
+label-urgent-foreground = ${colors.darkgrey}
+label-urgent-background = ${colors.lightgrey}
+
+label-visible = "●"
+label-visible-padding = 1
+label-visible-font = 3
+label-visible-foreground = ${colors.darkgrey}
+label-visible-background = ${colors.lightgrey}
+
+[module/music]
+type = custom/script
+interval = 1
+
+label = %output:0:50:...%
+label-font = 5
+
+exec = ~/.config/polybar/music.sh
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+
+format = <label> <ramp-coreload>
+format-background = ${colors.mediumgrey}
+format-foreground = ${colors.lightgrey}
+format-padding = 2
+
+label = 
+label-font = 2
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 5
+ramp-coreload-0-foreground = ${colors.lightgrey}
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 5
+ramp-coreload-1-foreground = ${colors.lightgrey}
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 5
+ramp-coreload-2-foreground = ${colors.lightgrey}
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 5
+ramp-coreload-3-foreground = ${colors.lightgrey}
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 5
+ramp-coreload-4-foreground = ${colors.lightgrey}
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 5
+ramp-coreload-5-foreground = ${colors.lightgrey}
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 5
+ramp-coreload-6-foreground = ${colors.lightgrey}
+ramp-coreload-7 = █
+ramp-coreload-7-font = 5
+ramp-coreload-7-foreground = ${colors.lightgrey}
+
+[module/memory]
+type = internal/memory
+
+format = <label> <bar-used>
+format-padding = 2
+format-background = ${colors.lightgrey}
+format-foreground = ${colors.darkgrey}
+
+label = 
+label-font = 3
+
+bar-used-width = 10
+bar-used-indicator = |
+bar-used-indicator-font = 4
+bar-used-indicator-foreground = ${colors.darkgrey}
+bar-used-fill = ─
+bar-used-fill-font = 4
+bar-used-fill-foreground = ${colors.darkgrey}
+bar-used-empty = ─
+bar-used-empty-font = 4
+bar-used-empty-foreground = ${colors.xcolor4}
+
+[module/clock]
+type = internal/date
+date = %%{T3}%H:%M%%{T-}
+
+label-padding = 1
+label-font = 5
+format-background = ${colors.mediumgrey}
+format-foreground = ${colors.white}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%Y-%m-%d"
+
+label = %date% 
+label-padding = 2
+label-font = 5
+label-background = ${colors.mediumgrey}
+label-foreground = ${colors.white}
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = 
+label-volume-foreground = ${colors.mediumgrey}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.mediumgrey}
+label-muted =  muted
+label-muted-foreground = ${colors.mediumgrey}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.mediumgrey}
+bar-volume-foreground-1 = ${colors.mediumgrey}
+bar-volume-foreground-2 = ${colors.mediumgrey}
+bar-volume-foreground-3 = ${colors.mediumgrey}
+bar-volume-foreground-4 = ${colors.mediumgrey}
+bar-volume-foreground-5 = ${colors.mediumgrey}
+bar-volume-foreground-6 = ${colors.mediumgrey}
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.mediumgrey}
+
+[module/pkg]
+
+type = custom/script
+interval = 1200
+
+format = <label>
+format-underline = #dc322f
+
+label = "%output:0:30%"
+label-font = 5
+label-padding = 2
+
+format-background = ${colors.darkgrey}
+format-foreground = ${colors.lightgrey}
+
+exec = .config/polybar/pkg.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+[module/pipe]
+type = custom/text
+content = "|"
+content-background = ${colors.darkgrey}
+content-foreground = ${colors.white}
+content-padding = 1
+
+[module/darkarrow]
+type = custom/text
+content = ""
+content-background = ${colors.background}
+content-foreground = ${colors.darkgrey}
+content-padding = 0
+
+[module/darkarrowright]
+type = custom/text
+content = ""
+content-background = ${colors.background}
+content-foreground = ${colors.darkgrey}
+content-padding = 0
+
+[module/lightarrow]
+type = custom/text
+content = ""
+content-background = ${colors.mediumgrey}
+content-foreground = ${colors.lightgrey}
+content-padding = 0
+
+[module/lightarrowright]
+type = custom/text
+content = ""
+content-background = ${colors.darkgrey}
+content-foreground = ${colors.lightgrey}
+content-padding = 0
+
+[module/mediumarrow]
+type = custom/text
+content = ""
+content-background = ${colors.darkgrey}
+content-foreground = ${colors.mediumgrey}
+content-padding = 0
+
+[module/mediumarrowright]
+type = custom/text
+content = ""
+content-background = ${colors.darkgrey}
+content-foreground = ${colors.mediumgrey}
+content-padding = 0
+
+[module/rightarrow]
+type = custom/text
+content = ""
+content-background = ${colors.darkgrey}
+content-foreground = ${colors.xcolor4}
+content-padding = 0
+
+[module/bluearrowright]
+type = custom/text
+content = ""
+content-background = ${colors.darkgrey}
+content-foreground = ${colors.blue}
+content-padding = 0
+
+[module/bluearrowleft]
+type = custom/text
+content = ""
+content-background = ${colors.darkgrey}
+content-foreground = ${colors.blue}
+content-padding = 0
+
+[module/orangearrowright]
+type = custom/text
+content = ""
+content-background = ${colors.darkgrey}
+content-foreground = ${colors.orange}
+content-padding = 0
+
+[module/orangearrowleft]
+type = custom/text
+content = ""
+content-background = ${colors.mediumgrey}
+content-foreground = ${colors.orange}
+content-padding = 0
