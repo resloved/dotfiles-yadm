@@ -8,7 +8,7 @@
 
 * WM: [i3-gaps](https://github.com/Airblader/i3)
 * Font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
-* Bar: [polybar](https://github.com/jaagr/polybar) (Modification of [/u/unix121's](https://www.reddit.com/r/unixporn/comments/6kpb3m/i3wm_something_for_july/) theme)
+* Bar: [polybar](https://github.com/jaagr/polybar) (Modification of [/u/unix121](https://www.reddit.com/r/unixporn/comments/6kpb3m/i3wm_something_for_july/)'s theme)
 * [lock.sh](https://github.com/resloved/lock.sh)
 * [powerline](https://github.com/powerline/powerline)
 * [vim colorscheme](https://github.com/resloved/myokai)
