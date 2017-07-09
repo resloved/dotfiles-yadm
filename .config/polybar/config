@@ -224,7 +224,6 @@ type = custom/script
 interval = 1200
 
 format = <label>
-format-underline = #dc322f
 
 label = "%output:0:30%"
 label-font = 5
@@ -234,7 +233,6 @@ format-background = ${colors.darkgrey}
 format-foreground = ${colors.lightgrey}
 
 exec = .config/polybar/pkg.sh
-exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 
 [module/pipe]
 type = custom/text
