@@ -1,7 +1,7 @@
 *customization: -color
 xterm*termName: xterm-256color
 
-xterm*faceName: Source Code Pro for Powerline
+xterm*faceName: Office Code Pro
 xterm*faceSize: 11
 
 !border
