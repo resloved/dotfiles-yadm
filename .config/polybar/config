@@ -58,7 +58,7 @@ tray-padding = 0
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:50:...%
+label = %title:0:20:...%
 label-background = ${colors.blue}
 label-foreground = ${colors.foreground}
 label-font = 1

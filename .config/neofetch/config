@@ -604,7 +604,7 @@ ascii_bold="on"
 # Default:  'off'
 # Values:   'on', 'off'
 # Flag:     --loop
-#image_loop="on"
+image_loop="on"
 
 # Thumbnail directory
 #

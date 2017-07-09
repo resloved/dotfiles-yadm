@@ -14,6 +14,4 @@ if [[ $player_status = "Playing" ]]; then
     echo "%{F#7baa14}$icon $metadata"       # Orange when playing
 elif [[ $player_status = "Paused" ]]; then
     echo "%{F#8a8a8a}$icon $metadata"       # Greyed out info when paused
-else
-    echo "%{F#8a8a8a}$icon"                 # Greyed out icon when stopped
 fi
