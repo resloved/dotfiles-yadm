@@ -23,6 +23,21 @@ set $term       xterm -fn xterm-256color
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# window edge
+hide_edge_borders both
+for_window [class="^.*"] border pixel 0
+
+# gaps
+set $inner 25
+set $outer 0
+
+gaps inner $inner
+gaps outer $outer
+
+# gap toggle
+bindsym $mod+g gaps inner all set $inner; gaps outer all set $outer;
+bindsym $mod+Ctrl+g gaps inner all set 0; gaps outer all set 0;
+
 # start a terminal
 bindsym $mod+Return exec $term
 bindsym $mod+Ctrl+Return exec $term -e tmux
@@ -32,24 +47,9 @@ bindsym $mod+Shift+Return exec --no-startup-id $term -class dropdown -e tmux
 exec --no-startup-id $term -class dropdown -e tmux
 for_window [instance="xterm" class="dropdown"] floating enable
 for_window [instance="xterm" class="dropdown"] resize set 1024 576
-for_window [instance="xterm" class="dropdown"] border pixel 5
+for_window [instance="xterm" class="dropdown"] border pixel 1
 for_window [instance="xterm" class="dropdown"] move scratchpad; [instance="xterm" class="dropdown"] scratchpad show; move scratchpad;
 bindsym $mod+space [instance="xterm" class="dropdown"] scratchpad show; move position center
-
-# window edge
-hide_edge_borders both
-for_window [class="^.*"] border pixel 0
-
-# gaps
-set $inner 25
-set $outer 20
-
-gaps inner $inner
-gaps outer $outer
-
-# gap toggle
-bindsym $mod+g gaps inner all set $inner; gaps outer all set $outer;
-bindsym $mod+Ctrl+g gaps inner all set 0; gaps outer all set 0;
 
 # kill focused window
 bindsym $mod+x kill
@@ -250,13 +250,11 @@ set $white	    #ffffff
 set $lightgrey	#969696
 set $mediumgrey #252525
 set $darkgrey	#1b1d1e
-set $urgent	    #ffa33a
-set $blue       #389bdf
+set $blue       #0087af
 set $orange     #ff5f00
-set $test       #5f5f5f
 
 # window		        border		background	text		indicator
-client.focused		    $mediumgrey	$mediumgrey	$white		$mediumgrey
+client.focused		    $mediumgrey $white      $white		$mediumgrey
 client.focused_inactive $mediumgrey	$mediumgrey	$lightgrey	$mediumgrey
 client.unfocused	    $mediumgrey	$mediumgrey	$lightgrey	$mediumgrey
 client.urgent		    $mediumgrey	$mediumgrey	$orange		$mediumgrey
