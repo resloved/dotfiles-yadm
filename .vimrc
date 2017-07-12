@@ -41,6 +41,7 @@ Plug 'juanwolf/browserlink.vim'
 Plug 'othree/html5.vim'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/guicolorscheme.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 "" Split
 

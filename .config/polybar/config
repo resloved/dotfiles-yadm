@@ -66,11 +66,12 @@ label-padding = 1
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
+;format = <label-state> <label-mode>
+format = <label-state>
 index-sort = true
 wrapping-scroll = false
 
-label-mode = "●"
+label-mode = " "
 label-mode-padding = 1
 label-mode-font = 3
 label-mode-foreground = ${colors.background}
