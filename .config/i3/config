@@ -26,6 +26,7 @@ floating_modifier $mod
 # window edge
 hide_edge_borders both
 for_window [class="^.*"] border pixel 0
+new_float pixel 1
 
 # gaps
 set $inner 25
@@ -41,16 +42,23 @@ bindsym $mod+Ctrl+g gaps inner all set 0; gaps outer all set 0;
 # start a terminal
 bindsym $mod+Return exec $term
 bindsym $mod+Ctrl+Return exec $term -e tmux
-bindsym $mod+Shift+Return exec --no-startup-id $term -class dropdown -e tmux
+bindsym $mod+Shift+Return exec $term -class dropdown -e tmux
 
 # scratchpad
 exec --no-startup-id $term -class dropdown -e tmux
 for_window [instance="xterm" class="dropdown"] floating enable
-for_window [instance="xterm" class="dropdown"] resize set 1024 576
-for_window [instance="xterm" class="dropdown"] border pixel 1
-for_window [instance="xterm" class="dropdown"] move scratchpad; [instance="xterm" class="dropdown"] scratchpad show; move scratchpad;
+for_window [instance="xterm" class="dropdown"] move scratchpad
 
-bindsym $mod+space [instance="xterm" class="dropdown"] scratchpad show; move position center
+# drop down
+#for_window [instance="xterm" class="dropdown"] resize set 1920 544
+#for_window [instance="xterm" class="dropdown"] move position 0 0
+# pull up
+for_window [instance="xterm" class="dropdown"] resize set 1927 540
+for_window [instance="xterm" class="dropdown"] move position 0 540
+# center
+#for_window [instance="xterm" class="dropdown"] resize set 1024 576
+
+bindsym $mod+space scratchpad show;
 
 # kill focused window
 bindsym $mod+x kill
@@ -198,18 +206,27 @@ bindsym $mod+Shift+s move workspace to output right
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
+        bindsym h resize shrink width  10 px or 10 ppt
+        bindsym j resize grow height   10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym l resize grow width    10 px or 10 ppt
+
+        bindsym Shift+h resize shrink width  50 px or 50 ppt
+        bindsym Shift+j resize grow height   50 px or 50 ppt
+        bindsym Shift+k resize shrink height 50 px or 50 ppt
+        bindsym Shift+l resize grow width    50 px or 50 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Down resize grow height  10 px or 10 ppt
+        bindsym Up resize shrink height  10 px or 10 ppt
+        bindsym Right resize grow width  10 px or 10 ppt
 
-        # back to normal: Enter or Escape
+        bindsym Shift+Left resize shrink width 50 px or 50 ppt
+        bindsym Shift+Down resize grow height  50 px or 50 ppt
+        bindsym Shift+Up resize shrink height  50 px or 50 ppt
+        bindsym Shift+Right resize grow width  50 px or 50 ppt
+
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -255,7 +272,7 @@ set $blue       #0087af
 set $orange     #ff5f00
 
 # window		        border		background	text		indicator
-client.focused		    $mediumgrey $lightgrey  $white		$mediumgrey
+client.focused		    $mediumgrey $mediumgrey $white		$mediumgrey
 client.focused_inactive $mediumgrey	$mediumgrey	$lightgrey	$mediumgrey
 client.unfocused	    $mediumgrey	$mediumgrey	$lightgrey	$mediumgrey
 client.urgent		    $mediumgrey	$mediumgrey	$orange		$mediumgrey
