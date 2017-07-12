@@ -29,8 +29,6 @@ xterm*color3:       #ff8700
 xterm*color11:      #ff8700
 
 ! blue
-!xterm*color4:       #0087af
-!xterm*color12:      #0087af
 xterm*color4:       #acac85
 xterm*color12:      #acac85
 
