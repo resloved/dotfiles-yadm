@@ -26,6 +26,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec $term
 bindsym $mod+Ctrl+Return exec $term -e tmux
+bindsym $mod+Shift+Return exec --no-startup-id $term -class dropdown -e tmux
 
 # scratchpad
 exec --no-startup-id $term -class dropdown -e tmux
