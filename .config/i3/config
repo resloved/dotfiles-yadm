@@ -296,7 +296,8 @@ assign [class="discord"] $ws8
 # tweetdeck
 assign [instance="tweetdeck.twitter.com"] $ws9
 # spotify
-assign [class="Spotify"] $ws10
+#assign [class="spotify"] $ws10
+for_window [class="Spotify"] move to workspace $ws10
 
 # application bindings
 bindsym $mod+m exec $music
