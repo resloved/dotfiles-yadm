@@ -255,7 +255,7 @@ set $blue       #0087af
 set $orange     #ff5f00
 
 # window		        border		background	text		indicator
-client.focused		    $mediumgrey $blue       $white		$mediumgrey
+client.focused		    $mediumgrey $lightgrey  $white		$mediumgrey
 client.focused_inactive $mediumgrey	$mediumgrey	$lightgrey	$mediumgrey
 client.unfocused	    $mediumgrey	$mediumgrey	$lightgrey	$mediumgrey
 client.urgent		    $mediumgrey	$mediumgrey	$orange		$mediumgrey
