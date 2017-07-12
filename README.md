@@ -21,6 +21,5 @@
 
 * Perfect terminal colors
 * fix tmux powerline theme
-* Add border to scratchpad
 * Launch script for scratchpad
 * change shell(?)
