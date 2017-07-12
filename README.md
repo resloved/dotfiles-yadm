@@ -19,6 +19,8 @@
 
 ## TODO:
 
-* General config file cleanup (especially i3)
-* Remove specific file location refrences
 * Perfect terminal colors
+* fix tmux powerline theme
+* Add border to scratchpad
+* Launch script for scratchpad
+* change shell(?)
