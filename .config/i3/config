@@ -4,7 +4,7 @@
 #
 # AUTHOR: Benjamin Friesen
 # REPO: https://github.com/resloved/dotfiles-yadm
-# CONTACT: bfriesen95@gmail.com
+# CONTACT: bfriesenwork@gmail.com
 
 #------------------------------
 #           GENERAL
@@ -13,7 +13,7 @@
 set $mod Mod4
 
 # Font
-font pango:Source Sans Pro Semibold 12
+font pango:Office Source Pro Semibold 11
 
 # general variables
 set $browser    google-chrome-stable
@@ -49,6 +49,7 @@ for_window [instance="xterm" class="dropdown"] floating enable
 for_window [instance="xterm" class="dropdown"] resize set 1024 576
 for_window [instance="xterm" class="dropdown"] border pixel 1
 for_window [instance="xterm" class="dropdown"] move scratchpad; [instance="xterm" class="dropdown"] scratchpad show; move scratchpad;
+
 bindsym $mod+space [instance="xterm" class="dropdown"] scratchpad show; move position center
 
 # kill focused window
@@ -254,7 +255,7 @@ set $blue       #0087af
 set $orange     #ff5f00
 
 # window		        border		background	text		indicator
-client.focused		    $mediumgrey $white      $white		$mediumgrey
+client.focused		    $mediumgrey $blue       $white		$mediumgrey
 client.focused_inactive $mediumgrey	$mediumgrey	$lightgrey	$mediumgrey
 client.unfocused	    $mediumgrey	$mediumgrey	$lightgrey	$mediumgrey
 client.urgent		    $mediumgrey	$mediumgrey	$orange		$mediumgrey
@@ -283,7 +284,8 @@ bindsym $mod+m exec $music
 bindsym $mod+Ctrl+m exec discord
 
 bindsym $mod+n exec $browser
-bindsym $mod+Ctrl+n exec $browser --app=file:///home/ben/code/web/
+set $web file:///home/ben/code/web/
+bindsym $mod+Ctrl+n exec $browser --app=$web
 
 bindsym $mod+t exec $browser --app=https://tweetdeck.twitter.com
 bindsym $mod+Ctrl+t exec $browser --app=https://twitch.tv

@@ -20,6 +20,5 @@
 ## TODO:
 
 * Perfect terminal colors
-* fix tmux powerline theme
 * Launch script for scratchpad
-* change shell(?)
+* Proper powerline config files

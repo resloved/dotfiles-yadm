@@ -73,31 +73,31 @@ wrapping-scroll = false
 label-mode = "●"
 label-mode-padding = 1
 label-mode-font = 3
-label-mode-foreground = ${colors.darkgrey}
+label-mode-foreground = ${colors.background}
 label-mode-background = ${colors.lightgrey}
 
 label-focused = "●"
 label-focused-padding = 1
 label-focused-font = 3
-label-focused-foreground = ${colors.darkgrey}
+label-focused-foreground = ${colors.background}
 label-focused-background = ${colors.lightgrey}
 
 label-unfocused = "○"
 label-unfocused-padding = 1
 label-unfocused-font = 3
-label-unfocused-foreground = ${colors.darkgrey}
+label-unfocused-foreground = ${colors.background}
 label-unfocused-background = ${colors.lightgrey}
 
 label-urgent = "●"
 label-urgent-padding = 1
 label-urgent-font = 3
-label-urgent-foreground = ${colors.darkgrey}
+label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.lightgrey}
 
 label-visible = "●"
 label-visible-padding = 1
 label-visible-font = 3
-label-visible-foreground = ${colors.darkgrey}
+label-visible-foreground = ${colors.background}
 label-visible-background = ${colors.lightgrey}
 
 [module/music]
