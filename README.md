@@ -20,5 +20,5 @@
 ## TODO:
 
 * Perfect terminal colors
-* Launch script for scratchpad
 * Proper powerline config files
+* [Tmux/Vim split navigation](https://github.com/christoomey/vim-tmux-navigator)
