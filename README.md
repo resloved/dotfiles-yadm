@@ -21,4 +21,3 @@
 
 * Perfect terminal colors
 * Proper powerline config files
-* [Tmux/Vim split navigation](https://github.com/christoomey/vim-tmux-navigator)
