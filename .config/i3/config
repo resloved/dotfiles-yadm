@@ -234,8 +234,9 @@ bindsym $mod+r mode "resize"
 #------------------------------
 
 # lock (github: https://github.com/resloved/lock.sh.git)
-bindsym $mod+Ctrl+x exec ~/.i3/lock.sh
-#bindsym $mod+Ctrl+x exec i3lock
+set $lock ~/.i3/lock.sh
+#set $lock i3lock
+bindsym $mod+Ctrl+x exec $lock
 
 # screenshot
 bindsym --release $mod+Print exec scrot -e 'mv $f ~/pictures/screenshots'
@@ -273,12 +274,20 @@ client.focused_inactive $mediumgrey	$mediumgrey	$lightgrey	$mediumgrey
 client.unfocused	    $mediumgrey	$mediumgrey	$lightgrey	$mediumgrey
 client.urgent		    $mediumgrey	$mediumgrey	$orange		$mediumgrey
 
+
+#-----------------------------
+#           BOOT
+#-----------------------------
+
 # polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # background
 set $background ~/pictures/wallpapers/circled.png
 exec_always feh --bg-scale $background
+
+# lock
+exec $lock
 
 #---------------------------------
 #           APPLICATIONS
