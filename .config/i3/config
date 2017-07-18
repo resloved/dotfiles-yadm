@@ -16,7 +16,7 @@ set $mod Mod4
 font pango:Office Source Pro Semibold 11
 
 # general variables
-set $browser    google-chrome-stable
+set $browser    chromium
 set $music      spotify
 set $term       xterm -fn xterm-256color
 
@@ -49,14 +49,8 @@ exec --no-startup-id $term -class dropdown -e tmux ~/.i3/scratchpad.sh
 for_window [instance="xterm" class="dropdown"] floating enable
 for_window [instance="xterm" class="dropdown"] move scratchpad
 
-# drop down
-#for_window [instance="xterm" class="dropdown"] resize set 1920 544
-#for_window [instance="xterm" class="dropdown"] move position 0 0
-# pull up
-for_window [instance="xterm" class="dropdown"] resize set 1920 540
-for_window [instance="xterm" class="dropdown"] move position 0 540
-# center
-#for_window [instance="xterm" class="dropdown"] resize set 1024 576
+for_window [instance="xterm" class="dropdown"] resize set 1366 384
+for_window [instance="xterm" class="dropdown"] move position 0 384
 
 for_window [instance="xterm" class="dropdown"] move scratchpad
 

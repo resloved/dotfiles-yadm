@@ -1,8 +1,8 @@
 *customization: -color
-xterm*termName: xterm-256color
+xterm*termName: xterm
 
 xterm*faceName: Office Code Pro
-xterm*faceSize: 11
+xterm*faceSize: 10
 
 !border
 xterm*borderWidth: 0
