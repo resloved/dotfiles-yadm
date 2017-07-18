@@ -13,7 +13,7 @@
 set $mod Mod4
 
 # Font
-font pango:Office Source Pro Semibold 11
+font pango:Office Source Pro Semibold 10
 
 # general variables
 set $browser    chromium
@@ -36,8 +36,8 @@ gaps inner $inner
 gaps outer $outer
 
 # gap toggle
-bindsym $mod+g gaps inner all set $inner; gaps outer all set $outer;
-bindsym $mod+Ctrl+g gaps inner all set 0; gaps outer all set 0;
+bindsym $mod+g gaps inner all set $inner; gaps outer all set $outer
+bindsym $mod+Ctrl+g gaps inner all set 0; gaps outer all set 0
 
 # start a terminal
 bindsym $mod+Return exec $term
@@ -50,7 +50,7 @@ for_window [instance="xterm" class="dropdown"] floating enable
 for_window [instance="xterm" class="dropdown"] move scratchpad
 
 for_window [instance="xterm" class="dropdown"] resize set 1366 384
-for_window [instance="xterm" class="dropdown"] move position 0 384
+for_window [instance="xterm" class="dropdown"] move position 0 390
 
 for_window [instance="xterm" class="dropdown"] move scratchpad
 
