@@ -42,7 +42,7 @@ Plug 'othree/html5.vim'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/guicolorscheme.vim'
 Plug 'christoomey/vim-tmux-navigator'
-
+Plug 'lilydjwg/colorizer'
 "" Split
 
 let g:make = 'gmake'
@@ -401,9 +401,6 @@ vnoremap K :m '<-2<CR>gv=gv
 
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
-
-"" Clear search
-nnoremap <CR> :noh<CR><CR>
 
 "*****************************************************************************
 "" Custom configs

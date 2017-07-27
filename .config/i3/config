@@ -53,10 +53,10 @@ for_window [instance="xterm" class="dropdown"] move scratchpad
 #for_window [instance="xterm" class="dropdown"] resize set 1920 544
 #for_window [instance="xterm" class="dropdown"] move position 0 0
 # pull up
-for_window [instance="xterm" class="dropdown"] resize set 1920 540
-for_window [instance="xterm" class="dropdown"] move position 0 540
+#for_window [instance="xterm" class="dropdown"] resize set 1920 540
+#for_window [instance="xterm" class="dropdown"] move position 0 540
 # center
-#for_window [instance="xterm" class="dropdown"] resize set 1024 576
+for_window [instance="xterm" class="dropdown"] resize set 1024 576
 
 for_window [instance="xterm" class="dropdown"] move scratchpad
 
