@@ -298,6 +298,9 @@ assign [instance="tweetdeck.twitter.com"] $ws9
 # spotify
 #assign [class="spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
+# Editing workspace
+assign [class="Gimp"] $ws5
+assign [class="Inkscape"] $ws5
 
 # application bindings
 bindsym $mod+m exec $music
@@ -309,3 +312,6 @@ bindsym $mod+Ctrl+n exec $browser --app=$web
 
 bindsym $mod+t exec $browser --app=https://tweetdeck.twitter.com
 bindsym $mod+Ctrl+t exec $browser --app=https://twitch.tv
+
+bindsym $mod+y exec gimp
+bindsym $mod+Ctrl+y exec inkscape
