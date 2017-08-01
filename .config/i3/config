@@ -307,7 +307,7 @@ bindsym $mod+m exec $music
 bindsym $mod+Ctrl+m exec discord
 
 bindsym $mod+n exec $browser
-set $web file:///home/ben/code/web/
+set $web file:///home/ben/code/
 bindsym $mod+Ctrl+n exec $browser --app=$web
 
 bindsym $mod+t exec $browser --app=https://tweetdeck.twitter.com
