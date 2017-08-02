@@ -2,8 +2,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
-# AUTHOR: Benjamin Friesen
-# REPO: https://github.com/resloved/dotfiles-yadm
+# AUTHOR:  Benjamin Friesen
+# REPO:    https://github.com/resloved/dotfiles-yadm
 # CONTACT: bfriesenwork@gmail.com
 
 #------------------------------
@@ -19,6 +19,11 @@ font pango:Office Source Pro Semibold 11
 set $browser    google-chrome-stable
 set $music      spotify
 set $term       xterm -fn xterm-256color
+
+# monitor outputs (if less then 3 you can just set them to the same output)
+set $monitor1 HDMI-0
+set $monitor2 DP-1
+set $monitor3 DVI-D-0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -45,20 +50,11 @@ bindsym $mod+Ctrl+Return exec $term -e tmux
 bindsym $mod+Shift+Return exec $term -class dropdown -e ~/.i3/scratchpad.sh
 
 # scratchpad
-exec --no-startup-id $term -class dropdown -e tmux ~/.i3/scratchpad.sh
-for_window [instance="xterm" class="dropdown"] floating enable
-for_window [instance="xterm" class="dropdown"] move scratchpad
+for_window [class="dropdown"] floating enable
+for_window [class="dropdown"] resize set 1920 576
+for_window [class="dropdown"] move scratchpad
 
-# drop down
-#for_window [instance="xterm" class="dropdown"] resize set 1920 544
-#for_window [instance="xterm" class="dropdown"] move position 0 0
-# pull up
-#for_window [instance="xterm" class="dropdown"] resize set 1920 540
-#for_window [instance="xterm" class="dropdown"] move position 0 540
-# center
-for_window [instance="xterm" class="dropdown"] resize set 1024 576
-
-for_window [instance="xterm" class="dropdown"] move scratchpad
+exec --no-startup-id $term -name dropdown -e ~/.i3/scratchpad.sh
 
 bindsym $mod+space scratchpad show;
 
@@ -69,21 +65,15 @@ bindsym $mod+x kill
 bindsym $mod+Ctrl+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Ctrl+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # start rofi
 # - run
-bindsym $mod+Ctrl+d exec rofi -show run
+bindsym $mod+d exec rofi -show run
 # - window
-bindsym $mod+d exec rofi -show window
+bindsym $mod+Ctrl+d exec rofi -show window
 
 #------------------------------
 #           MOVEMENT
@@ -95,7 +85,6 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -107,37 +96,33 @@ bindsym $mod+Ctrl+j move down
 bindsym $mod+Ctrl+k move up
 bindsym $mod+Ctrl+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Ctrl+Left move left
-bindsym $mod+Ctrl+Down move down
-bindsym $mod+Ctrl+Up move up
+bindsym $mod+Ctrl+Left  move left
+bindsym $mod+Ctrl+Down  move down
+bindsym $mod+Ctrl+Up    move up
 bindsym $mod+Ctrl+Right move right
 
-# split in horizontal orientation
-bindsym $mod+b split h
+# resize window
+bindsym $mod+Shift+h resize shrink width  10px or 10 ppt
+bindsym $mod+Shift+j resize shrink height 10px or 10 ppt
+bindsym $mod+Shift+k resize grow height   10px or 10 ppt
+bindsym $mod+Shift+l resize grow width    10px or 10 ppt
 
-# split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+Left  resize shrink width  10px or 10 ppt
+bindsym $mod+Shift+Down  resize shrink height 10px or 10 ppt
+bindsym $mod+Shift+Up    resize grow height   10px or 10 ppt
+bindsym $mod+Shift+Right resize grow width    10px or 10 ppt
+
+# split toggle
+bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Ctrl+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 #---------------------------------
 #           WORKSPACES
@@ -155,6 +140,24 @@ set $ws8 ""
 set $ws9 ""
 set $ws10 ""
 
+# specific gaps
+workspace $ws6 gaps inner 0
+workspace $ws6 gaps outer 0
+
+# specific monitor
+workspace $ws1 output  $monitor1
+workspace $ws2 output  $monitor1
+workspace $ws3 output  $monitor1
+
+workspace $ws4 output  $monitor2
+workspace $ws5 output  $monitor2
+workspace $ws6 output  $monitor2
+
+workspace $ws7 output  $monitor3
+workspace $ws8 output  $monitor3
+workspace $ws9 output  $monitor3
+workspace $ws10 output $monitor3
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -166,6 +169,17 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Mod2+KP_1 workspace $ws1
+bindsym $mod+Mod2+KP_2 workspace $ws2
+bindsym $mod+Mod2+KP_3 workspace $ws3
+bindsym $mod+Mod2+KP_4 workspace $ws4
+bindsym $mod+Mod2+KP_5 workspace $ws5
+bindsym $mod+Mod2+KP_6 workspace $ws6
+bindsym $mod+Mod2+KP_7 workspace $ws7
+bindsym $mod+Mod2+KP_8 workspace $ws8
+bindsym $mod+Mod2+KP_9 workspace $ws9
+bindsym $mod+Mod2+KP_0 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -179,28 +193,16 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8
 bindsym $mod+Ctrl+9 move container to workspace $ws9
 bindsym $mod+Ctrl+0 move container to workspace $ws10
 
-# -numpad
-bindsym $mod+Mod2+KP_1 workspace $ws1
-bindsym $mod+Mod2+KP_2 workspace $ws2
-bindsym $mod+Mod2+KP_3 workspace $ws3
-bindsym $mod+Mod2+KP_4 workspace $ws4
-bindsym $mod+Mod2+KP_5 workspace $ws5
-bindsym $mod+Mod2+KP_6 workspace $ws6
-bindsym $mod+Mod2+KP_7 workspace $ws7
-bindsym $mod+Mod2+KP_8 workspace $ws8
-bindsym $mod+Mod2+KP_9 workspace $ws9
-bindsym $mod+Mod2+KP_0 workspace $ws10
-
-bindsym $mod+Ctrl+Mod2+KP_End move container to workspace    $ws1
-bindsym $mod+Ctrl+Mod2+KP_Down move container to workspace   $ws2
-bindsym $mod+Ctrl+Mod2+KP_Next move container to workspace   $ws3
-bindsym $mod+Ctrl+Mod2+KP_Left move container to workspace   $ws4
-bindsym $mod+Ctrl+Mod2+KP_Begin move container to workspace  $ws5
-bindsym $mod+Ctrl+Mod2+KP_Right move container to workspace  $ws6
-bindsym $mod+Ctrl+Mod2+KP_Home move container to workspace   $ws7
-bindsym $mod+Ctrl+Mod2+KP_Up move container to workspace     $ws8
-bindsym $mod+Ctrl+Mod2+KP_Prior move container to workspace  $ws9
-bindsym $mod+Ctrl+Mod2+KP_Insert move container to workspace $ws10
+bindsym $mod+Ctrl+Mod2+KP_1 move container to workspace $ws1
+bindsym $mod+Ctrl+Mod2+KP_2 move container to workspace $ws2
+bindsym $mod+Ctrl+Mod2+KP_3 move container to workspace $ws3
+bindsym $mod+Ctrl+Mod2+KP_4 move container to workspace $ws4
+bindsym $mod+Ctrl+Mod2+KP_5 move container to workspace $ws5
+bindsym $mod+Ctrl+Mod2+KP_6 move container to workspace $ws6
+bindsym $mod+Ctrl+Mod2+KP_7 move container to workspace $ws7
+bindsym $mod+Ctrl+Mod2+KP_8 move container to workspace $ws8
+bindsym $mod+Ctrl+Mod2+KP_9 move container to workspace $ws9
+bindsym $mod+Ctrl+Mod2+KP_0 move container to workspace $ws10
 
 # switch workspace monitor
 bindsym $mod+Shift+s move workspace to output right
@@ -247,18 +249,13 @@ bindsym $mod+Ctrl+x exec ~/.i3/lock.sh
 bindsym --release $mod+Print exec scrot -e 'mv $f ~/pictures/screenshots'
 bindsym --release $mod+Ctrl+Print exec scrot -s -e 'mv $f ~/pictures/screenshots'
 
-# screencast (https://www.youtube.com/watch?v=Ja-DgvGPDu8)
-bindsym --release $mod+Scroll_lock exec ~/.i3/screencast.sh
-# -kill
-bindsym --release $mod+shift+Scroll_lock exec killall ffmpeg
-# gifcast (https://unix.stackexchange.com/questions/113695/gif-screencasting-the-unix-way)
-#bindsym --release $mod+ctrl+Scroll_Lock exec ~/.i3/gif.sh
-# -kill
-
 # media control
-bindsym $mod+i exec playerctl play-pause
-bindsym $mod+o exec playerctl previous
-bindsym $mod+p exec playerctl next
+bindsym $mod+slash  exec playerctl play-pause
+bindsym $mod+comma  exec playerctl previous
+bindsym $mod+period exec playerctl next
+
+bindsym $mod+Ctrl+comma  exec amixer sset Master 5%-
+bindsym $mod+Ctrl+period exec amixer sset Master 5%+
 
 #------------------------------
 #           COLORS
@@ -290,28 +287,74 @@ exec_always feh --bg-scale $background
 #           APPLICATIONS
 #---------------------------------
 
-# application rules
+## Application rules
+
+# gimp
+for_window [title="GIMP Startup"] move workspace $ws6
+for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
+for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 px or 30ppt
+assign [class="Gimp"] $ws6
+
+# inkscape
+assign [class="Inkscape"] $ws6
+
+# blender
+assign [class="Blender"] $ws6
+
+# twitch
+assign [instance="twitch.tv"] $ws7
+for_window [instance="twitch.tv"] fullscreen enable
+
+# youtube
+assign [instance="youtube.com"] $ws7
+for_window [instance="youtube.com"] fullscreen enable
+
 # discord
 assign [class="discord"] $ws8
+for_window [class="discord"] fullscreen enable
+
 # tweetdeck
 assign [instance="tweetdeck.twitter.com"] $ws9
+for_window [instance="tweetdeck.twitter.com"] fullscreen enable
+
 # spotify
-#assign [class="spotify"] $ws10
 for_window [class="Spotify"] move to workspace $ws10
-# Editing workspace
-assign [class="Gimp"] $ws5
-assign [class="Inkscape"] $ws5
+for_window [class="Spotify"] fullscreen enable
 
-# application bindings
-bindsym $mod+m exec $music
-bindsym $mod+Ctrl+m exec discord
+## Application bindings
+#bindsym $mod+b       exec
+#bindsym $mod+Ctrl+b  exec
+#bindsym $mod+Shift+b exec
 
-bindsym $mod+n exec $browser
-set $web file:///home/ben/code/
-bindsym $mod+Ctrl+n exec $browser --app=$web
+set $code file:///home/ben/code/
+bindsym $mod+n       exec $browser
+bindsym $mod+Ctrl+n  exec $browser --app=$code
+bindsym $mod+Shift+n exec chromium
 
-bindsym $mod+t exec $browser --app=https://tweetdeck.twitter.com
-bindsym $mod+Ctrl+t exec $browser --app=https://twitch.tv
+bindsym $mod+m       exec $music
+bindsym $mod+Ctrl+m  exec discord
+#bindsym $mod+Shift+m exec
 
-bindsym $mod+y exec gimp
-bindsym $mod+Ctrl+y exec inkscape
+bindsym $mod+t       exec $browser --app=https://tweetdeck.twitter.com
+bindsym $mod+Ctrl+t  exec $browser --app=https://twitch.tv
+bindsym $mod+Shift+t exec $browser --app=https://youtube.com
+
+bindsym $mod+y       exec gimp
+bindsym $mod+Ctrl+y  exec inkscape
+bindsym $mod+Shift+y exec blender
+
+#bindsym $mod+u       exec
+#bindsym $mod+Ctrl+u  exec
+#bindsym $mod+Shift+u exec
+
+#bindsym $mod+i       exec
+#bindsym $mod+Ctrl+i  exec
+#bindsym $mod+Shift+i exec
+
+#bindsym $mod+o       exec
+#bindsym $mod+Ctrl+o  exec
+#bindsym $mod+Shift+o exec
+
+#bindsym $mod+p       exec
+#bindsym $mod+Ctrl+p  exec
+#bindsym $mod+Shift+p exec
