@@ -44,7 +44,6 @@ gaps outer $outer
 # gap toggle
 bindsym $mod+g gaps inner all set $inner; gaps outer all set $outer;
 bindsym $mod+Ctrl+g gaps inner all set 0; gaps outer all set 0;
-
 # start a terminal
 bindsym $mod+Return exec $term
 bindsym $mod+Ctrl+Return exec $term -e tmux
@@ -366,5 +365,4 @@ bindsym $mod+Shift+y exec blender
 #=============LAUNCH=============
 
 exec --no-startup-id discord
-exec --no-startup-id $browser --app=https://tweetdeck.twitter.com
 exec --no-startup-id $browser --app=https://tweetdeck.twitter.com
