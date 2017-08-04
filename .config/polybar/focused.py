@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 import i3ipc
 
-# fix scratchpad/floating
-
 i3 = i3ipc.Connection()
+
 foc = i3.get_tree().find_focused()
 
-cur = foc.parent
+if foc.type == 'workspace':
+    print('')
 
-loc = [1,1]
+cur = foc.parent
 
 layer = 'nodes'
 tag = '*'
@@ -16,6 +16,8 @@ tag = '*'
 if foc.parent.type == 'floating_con':
     layer = 'floating_' + layer
     tag = '^'
+
+loc = [1,1]
 
 while True:
     split = cur.orientation
@@ -31,4 +33,5 @@ while True:
         break
     foc = cur
     cur = cur.parent
+
 print(str(loc[0]) + tag +str(loc[1]))

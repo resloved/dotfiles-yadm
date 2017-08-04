@@ -286,7 +286,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # background
 set $background ~/pictures/wallpapers/circled.png
-exec_always feh --bg-scale $background
+exec_always feh --bg-scale $background --bg $~/pictures/wallpapers/circle.jpg --bg-scale $background
 
 #========== APPLICATIONS ==========
 

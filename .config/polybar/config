@@ -48,7 +48,7 @@ font-5 = Office Code Pro:weight=semibold:size=11;3
 font-6 = Office Code Pro:weight=bold:size=13;4
 font-7 = Office Code Pro:weight=bold:size=11;5
 
-modules-left = focus xwindow bluearrowright
+modules-left = monitor lightarrowright bluearrowinvert focus xwindow bluearrowright
 modules-center = music
 modules-right = pkg mediumarrow date clock lightarrow i3
 
@@ -144,12 +144,15 @@ label-font = 5
 
 exec = ~/.config/polybar/music.sh
 
+format-background = ${colors.darkgrey}
+format-foreground = ${colors.lightgrey}
+
 [module/cpu]
 type = internal/cpu
 interval = 0.5
 
 format = <label> <ramp-coreload>
-format-background = ${colors.mediumgrey}
+format-background = ${colors.background}
 format-foreground = ${colors.lightgrey}
 format-padding = 2
 
@@ -279,7 +282,7 @@ content-padding = 1
 [module/focus]
 
 type = custom/script
-interval = 0.1
+interval = 0.05
 
 format = <label>
 
@@ -291,6 +294,22 @@ format-background = ${colors.blue}
 format-foreground = ${colors.lightblue}
 
 exec = .config/polybar/focused.py
+
+[module/monitor]
+
+type = custom/script
+interval = 0.05
+
+format = <label>
+
+label = "%output%"
+label-font = 6
+label-padding = 1
+
+format-background = ${colors.lightgrey}
+format-foreground = ${colors.background}
+
+exec = .config/polybar/monitor.py
 
 [module/darkarrow]
 type = custom/text
@@ -353,6 +372,13 @@ type = custom/text
 content = ""
 content-background = ${colors.darkgrey}
 content-foreground = ${colors.blue}
+content-padding = 0
+
+[module/bluearrowinvert]
+type = custom/text
+content = ""
+content-background = ${colors.blue}
+content-foreground = ${colors.darkgrey}
 content-padding = 0
 
 [module/orangearrowright]
