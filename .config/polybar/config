@@ -76,7 +76,7 @@ font-4 = Office Code Pro:weight=light:size=11;3
 font-5 = Office Code Pro:weight=semibold:size=11;3
 font-6 = Office Code Pro;weight=semibold:size=14;3
 
-modules-center = music
+modules-center = scroll
 
 ;tray-position = right
 tray-transparent = false
@@ -143,6 +143,18 @@ label = %output:0:50:...%
 label-font = 5
 
 exec = ~/.config/polybar/music.sh
+
+format-background = ${colors.darkgrey}
+format-foreground = ${colors.lightgrey}
+
+[module/scroll]
+type = custom/script
+interval = 0.005
+
+label = %output:0:150:...%
+label-font = 5
+
+exec = ~/.config/polybar/scroll.sh
 
 format-background = ${colors.darkgrey}
 format-foreground = ${colors.lightgrey}
