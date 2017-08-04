@@ -1,3 +1,4 @@
+# ========================================================================
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -5,10 +6,10 @@
 # AUTHOR:  Benjamin Friesen
 # REPO:    https://github.com/resloved/dotfiles-yadm
 # CONTACT: bfriesenwork@gmail.com
+#
+# ========================================================================
 
-#------------------------------
-#           GENERAL
-#------------------------------
+#============= GENERAL ============
 
 set $mod Mod4
 
@@ -54,7 +55,7 @@ for_window [class="dropdown"] floating enable
 for_window [class="dropdown"] resize set 1920 576
 for_window [class="dropdown"] move scratchpad
 
-exec --no-startup-id $term -name dropdown -e ~/.i3/scratchpad.sh
+exec --no-startup-id $term -class dropdown -e ~/.i3/scratchpad.sh
 
 bindsym $mod+space scratchpad show;
 
@@ -75,9 +76,7 @@ bindsym $mod+d exec rofi -show run
 # - window
 bindsym $mod+Ctrl+d exec rofi -show window
 
-#------------------------------
-#           MOVEMENT
-#------------------------------
+#============ MOVEMENT ============
 
 # change focus
 bindsym $mod+h focus left
@@ -124,9 +123,7 @@ bindsym $mod+Ctrl+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
 
-#---------------------------------
-#           WORKSPACES
-#---------------------------------
+#=========== WORKSPACES ===========
 
 # workspaces
 set $ws1 "1"
@@ -249,9 +246,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#------------------------------
-#           TOOLS
-#------------------------------
+#============== TOOLS =============
 
 # lock (github: https://github.com/resloved/lock.sh.git)
 bindsym $mod+Ctrl+x exec ~/.i3/lock.sh
@@ -269,9 +264,7 @@ bindsym $mod+period exec playerctl next
 bindsym $mod+Ctrl+comma  exec amixer sset Master 5%-
 bindsym $mod+Ctrl+period exec amixer sset Master 5%+
 
-#------------------------------
-#           COLORS
-#------------------------------
+#============= VISUAL =============
 
 # colors
 set $black      #000000
@@ -295,11 +288,9 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 set $background ~/pictures/wallpapers/circled.png
 exec_always feh --bg-scale $background
 
-#---------------------------------
-#           APPLICATIONS
-#---------------------------------
+#========== APPLICATIONS ==========
 
-## Application rules
+#------- Application rules --------
 
 # gimp
 for_window [title="GIMP Startup"] move workspace $ws6
@@ -314,10 +305,12 @@ assign [class="Inkscape"] $ws6
 assign [class="Blender"] $ws6
 
 # twitch
+set $twitch $browser --app=https://twitch.tv
 assign [instance="twitch.tv"] $ws7
 for_window [instance="twitch.tv"] fullscreen enable
 
 # youtube
+set $youtube $browser --app=https://youtube.com
 assign [instance="youtube.com"] $ws7
 for_window [instance="youtube.com"] fullscreen enable
 
@@ -326,6 +319,7 @@ assign [class="discord"] $ws8
 for_window [class="discord"] fullscreen enable
 
 # tweetdeck
+set $tweetdeck $browser --app=https://tweetdeck.twitter.com
 assign [instance="tweetdeck.twitter.com"] $ws9
 for_window [instance="tweetdeck.twitter.com"] fullscreen enable
 
@@ -333,7 +327,8 @@ for_window [instance="tweetdeck.twitter.com"] fullscreen enable
 for_window [class="Spotify"] move to workspace $ws10
 for_window [class="Spotify"] fullscreen enable
 
-## Application bindings
+#------ Application binding ------
+
 #bindsym $mod+b       exec
 #bindsym $mod+Ctrl+b  exec
 #bindsym $mod+Shift+b exec
@@ -347,9 +342,9 @@ bindsym $mod+m       exec $music
 bindsym $mod+Ctrl+m  exec discord
 #bindsym $mod+Shift+m exec
 
-bindsym $mod+t       exec $browser --app=https://tweetdeck.twitter.com
-bindsym $mod+Ctrl+t  exec $browser --app=https://twitch.tv
-bindsym $mod+Shift+t exec $browser --app=https://youtube.com
+bindsym $mod+t       exec $tweetdeck
+bindsym $mod+Ctrl+t  exec $twitch
+bindsym $mod+Shift+t exec $youtube
 
 bindsym $mod+y       exec gimp
 bindsym $mod+Ctrl+y  exec inkscape
@@ -370,3 +365,9 @@ bindsym $mod+Shift+y exec blender
 #bindsym $mod+p       exec
 #bindsym $mod+Ctrl+p  exec
 #bindsym $mod+Shift+p exec
+
+#=============LAUNCH=============
+
+exec --no-startup-id discord
+exec --no-startup-id $tweetdeck
+exec --no-startup-id $music
