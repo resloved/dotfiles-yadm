@@ -305,12 +305,10 @@ assign [class="Inkscape"] $ws6
 assign [class="Blender"] $ws6
 
 # twitch
-set $twitch $browser --app=https://twitch.tv
 assign [instance="twitch.tv"] $ws7
 for_window [instance="twitch.tv"] fullscreen enable
 
 # youtube
-set $youtube $browser --app=https://youtube.com
 assign [instance="youtube.com"] $ws7
 for_window [instance="youtube.com"] fullscreen enable
 
@@ -319,7 +317,6 @@ assign [class="discord"] $ws8
 for_window [class="discord"] fullscreen enable
 
 # tweetdeck
-set $tweetdeck $browser --app=https://tweetdeck.twitter.com
 assign [instance="tweetdeck.twitter.com"] $ws9
 for_window [instance="tweetdeck.twitter.com"] fullscreen enable
 
@@ -342,9 +339,9 @@ bindsym $mod+m       exec $music
 bindsym $mod+Ctrl+m  exec discord
 #bindsym $mod+Shift+m exec
 
-bindsym $mod+t       exec $tweetdeck
-bindsym $mod+Ctrl+t  exec $twitch
-bindsym $mod+Shift+t exec $youtube
+bindsym $mod+t       exec $browser --app=https://tweetdeck.twitter.com
+bindsym $mod+Ctrl+t  exec $browser --app=https://twitch.tv
+bindsym $mod+Shift+t exec $browser --app=https://youtube.com
 
 bindsym $mod+y       exec gimp
 bindsym $mod+Ctrl+y  exec inkscape
@@ -369,5 +366,5 @@ bindsym $mod+Shift+y exec blender
 #=============LAUNCH=============
 
 exec --no-startup-id discord
-exec --no-startup-id $tweetdeck
-exec --no-startup-id $music
+exec --no-startup-id $browser --app=https://tweetdeck.twitter.com
+exec --no-startup-id $browser --app=https://tweetdeck.twitter.com

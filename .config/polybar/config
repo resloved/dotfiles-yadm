@@ -9,6 +9,7 @@ lightgrey  = #8A8A8A
 mediumgrey = #444444
 darkgrey   = #1b1d1e
 blue       = #0087af
+lightblue  = #99FFFF
 green      = #7baa14
 orange     = #d75f00
 
@@ -44,8 +45,10 @@ font-2 = Office Code Pro:weight=bold:size=11;3
 font-3 = Terminus:size=11;2
 font-4 = Office Code Pro:weight=light:size=11;3
 font-5 = Office Code Pro:weight=semibold:size=11;3
+font-6 = Office Code Pro:weight=bold:size=13;4
+font-7 = Office Code Pro:weight=bold:size=11;5
 
-modules-left = xwindow bluearrowright
+modules-left = focus xwindow bluearrowright
 modules-center = music
 modules-right = pkg mediumarrow date clock lightarrow i3
 
@@ -71,10 +74,9 @@ font-2 = Office Code Pro:weight=bold:size=11;3
 font-3 = Terminus:size=11;2
 font-4 = Office Code Pro:weight=light:size=11;3
 font-5 = Office Code Pro:weight=semibold:size=11;3
+font-6 = Office Code Pro;weight=semibold:size=14;3
 
-modules-left = xwindow bluearrowright
 modules-center = music
-modules-right = pkg mediumarrow date clock lightarrow i3
 
 ;tray-position = right
 tray-transparent = false
@@ -98,33 +100,38 @@ format = <label-state>
 index-sort = true
 wrapping-scroll = false
 
-label-mode = " "
+;label-mode = " "
+label-mode = "*"
 label-mode-padding = 1
-label-mode-font = 3
+label-mode-font = 7
 label-mode-foreground = ${colors.background}
 label-mode-background = ${colors.lightgrey}
 
-label-focused = "●"
+;label-focused = "●"
+label-focused = "@"
 label-focused-padding = 1
-label-focused-font = 3
+label-focused-font = 7
 label-focused-foreground = ${colors.background}
 label-focused-background = ${colors.lightgrey}
 
-label-unfocused = "○"
+;label-unfocused = "○"
+label-unfocused = "*"
 label-unfocused-padding = 1
-label-unfocused-font = 3
+label-unfocused-font = 5
 label-unfocused-foreground = ${colors.background}
 label-unfocused-background = ${colors.lightgrey}
 
-label-urgent = "●"
+;label-urgent = "●"
+label-urgent = "^"
 label-urgent-padding = 1
-label-urgent-font = 3
+label-urgent-font = 8
 label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.lightgrey}
 
-label-visible = "●"
+;label-visible = "●"
+label-visible = "*"
 label-visible-padding = 1
-label-visible-font = 3
+label-visible-font = 7
 label-visible-foreground = ${colors.background}
 label-visible-background = ${colors.lightgrey}
 
@@ -268,6 +275,22 @@ content = "|"
 content-background = ${colors.darkgrey}
 content-foreground = ${colors.white}
 content-padding = 1
+
+[module/focus]
+
+type = custom/script
+interval = 0.1
+
+format = <label>
+
+label = "%output% "
+label-font = 5
+label-padding = 1
+
+format-background = ${colors.blue}
+format-foreground = ${colors.lightblue}
+
+exec = .config/polybar/focused.py
 
 [module/darkarrow]
 type = custom/text
