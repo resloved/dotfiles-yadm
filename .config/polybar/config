@@ -11,7 +11,9 @@ darkgrey   = #1b1d1e
 blue       = #0087af
 lightblue  = #99FFFF
 green      = #7baa14
+yellow     = #e3ff16
 orange     = #d75f00
+red        = #ce1100
 
 background = #262626
 background-alt = #2E2E2E
@@ -40,17 +42,17 @@ background = ${colors.darkgrey}
 foreground = ${colors.foreground}
 
 font-0 = PowerlineSymbols:size=16;4
-font-1 = FontAwesome:size=9;3
-font-2 = Office Code Pro:weight=bold:size=9;3
-font-3 = Terminus:size=9;2
-font-4 = Office Code Pro:weight=light:size=9;3
-font-5 = Office Code Pro:weight=semibold:size=9;3
+font-1 = FontAwesome:size=8;3
+font-2 = Office Code Pro:weight=bold:size=8;3
+font-3 = Terminus:size=8;2
+font-4 = Office Code Pro:weight=light:size=8;3
+font-5 = Office Code Pro:weight=semibold:size=8;3
 font-6 = Office Code Pro:weight=bold:size=11;4
-font-7 = Office Code Pro:weight=bold:size=9;5
+font-7 = Office Code Pro:weight=bold:size=8;5
 
 modules-left = focus xwindow bluearrowright
 modules-center = music
-modules-right = pkg mediumarrow date clock lightarrow i3
+modules-right = pkg network battery mediumarrow date clock lightarrow i3
 
 ;tray-position = right
 tray-transparent = false
@@ -139,12 +141,53 @@ label-font = 5
 label-background = ${colors.mediumgrey}
 label-foreground = ${colors.white}
 
+[module/network]
+type = internal/network
+interface = wlp3s0
+
+interval = 3.0
+udspeed-minwidth = 1
+accumulate-stats = true
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+format-packetloss = <animation-packetloss> <label-connected>
+label-connected-font = 5
+label-connected =  %downspeed% 
+label-connected-foreground = ${colors.lightgrey}
+label-connected-padding = 1
+label-disconnected-font = 1
+label-disconnected = * 
+label-disconnected-foreground = ${colors.red}
+label-disconnected-padding = 1
+
+[module/battery]
+
+type=internal/battery
+
+full-at=99
+
+battery=BAT1
+adapter=ACAD
+
+font = 5
+
+label-charging-font = 5
+label-charging-foreground = ${colors.lightgrey}
+label-charging = %percentage%%
+label-charging-padding = 1
+
+label-discharging-font = 5
+label-discharging-foreground = ${colors.lightgrey}
+label-discharging = %percentage%%
+label-discharging-padding = 2
+
 [module/pkg]
 
 type = custom/script
 interval = 1200
 
-format = <label>
+format = <label>
 
 label = "%output:0:30%"
 label-font = 5

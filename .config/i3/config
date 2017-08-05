@@ -51,11 +51,11 @@ for_window [instance="xterm" class="dropdown"] floating enable
 for_window [instance="xterm" class="dropdown"] move scratchpad
 
 # drop down
-#for_window [instance="xterm" class="dropdown"] resize set 1920 544
+#for_window [instance="xterm" class="dropdown"] resize set 1366 384
 #for_window [instance="xterm" class="dropdown"] move position 0 0
 # pull up
-for_window [instance="xterm" class="dropdown"] resize set 1920 540
-for_window [instance="xterm" class="dropdown"] move position 0 540
+for_window [instance="xterm" class="dropdown"] resize set 1366 384
+for_window [instance="xterm" class="dropdown"] move position 0 390
 # center
 #for_window [instance="xterm" class="dropdown"] resize set 1024 576
 
@@ -367,3 +367,4 @@ bindsym $mod+Shift+y exec blender
 
 exec --no-startup-id discord
 exec --no-startup-id $browser --app=https://tweetdeck.twitter.com
+exec .i3/lock.sh
