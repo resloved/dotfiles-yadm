@@ -9,6 +9,7 @@ lightgrey  = #8A8A8A
 mediumgrey = #444444
 darkgrey   = #1b1d1e
 blue       = #0087af
+lightblue  = #99FFFF
 green      = #7baa14
 orange     = #d75f00
 
@@ -30,7 +31,7 @@ margin-bottom = 5
 
 [bar/main_bar]
 width = 100%
-height = 19
+height = 16
 bottom=true
 
 monitor = ${env:MONITOR}
@@ -38,14 +39,16 @@ monitor = ${env:MONITOR}
 background = ${colors.darkgrey}
 foreground = ${colors.foreground}
 
-font-0 = PowerlineSymbols:size=16;0
-font-1 = FontAwesome:size=16;3
-font-2 = Office Code Pro:weight=bold:size=10;3
-font-3 = Terminus:size=10;2
-font-4 = Office Code Pro:weight=light:size=10;3
-font-5 = Office Code Pro:weight=semibold:size=10;3
+font-0 = PowerlineSymbols:size=16;4
+font-1 = FontAwesome:size=9;3
+font-2 = Office Code Pro:weight=bold:size=9;3
+font-3 = Terminus:size=9;2
+font-4 = Office Code Pro:weight=light:size=9;3
+font-5 = Office Code Pro:weight=semibold:size=9;3
+font-6 = Office Code Pro:weight=bold:size=11;4
+font-7 = Office Code Pro:weight=bold:size=9;5
 
-modules-left = xwindow bluearrowright
+modules-left = focus xwindow bluearrowright
 modules-center = music
 modules-right = pkg mediumarrow date clock lightarrow i3
 
@@ -71,33 +74,38 @@ format = <label-state>
 index-sort = true
 wrapping-scroll = false
 
-label-mode = " "
+;label-mode = " "
+label-mode = "*"
 label-mode-padding = 1
-label-mode-font = 3
+label-mode-font = 7
 label-mode-foreground = ${colors.background}
 label-mode-background = ${colors.lightgrey}
 
-label-focused = "●"
+;label-focused = "●"
+label-focused = "@"
 label-focused-padding = 1
-label-focused-font = 3
+label-focused-font = 7
 label-focused-foreground = ${colors.background}
 label-focused-background = ${colors.lightgrey}
 
-label-unfocused = "○"
+;label-unfocused = "○"
+label-unfocused = "*"
 label-unfocused-padding = 1
-label-unfocused-font = 3
+label-unfocused-font = 5
 label-unfocused-foreground = ${colors.background}
 label-unfocused-background = ${colors.lightgrey}
 
-label-urgent = "●"
+;label-urgent = "●"
+label-urgent = "^"
 label-urgent-padding = 1
-label-urgent-font = 3
+label-urgent-font = 8
 label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.lightgrey}
 
-label-visible = "●"
+;label-visible = "●"
+label-visible = "*"
 label-visible-padding = 1
-label-visible-font = 3
+label-visible-font = 7
 label-visible-foreground = ${colors.background}
 label-visible-background = ${colors.lightgrey}
 
@@ -109,65 +117,6 @@ label = %output:0:50:...%
 label-font = 5
 
 exec = ~/.config/polybar/music.sh
-
-[module/cpu]
-type = internal/cpu
-interval = 0.5
-
-format = <label> <ramp-coreload>
-format-background = ${colors.mediumgrey}
-format-foreground = ${colors.lightgrey}
-format-padding = 2
-
-label = 
-label-font = 2
-
-ramp-coreload-0 = ▁
-ramp-coreload-0-font = 5
-ramp-coreload-0-foreground = ${colors.lightgrey}
-ramp-coreload-1 = ▂
-ramp-coreload-1-font = 5
-ramp-coreload-1-foreground = ${colors.lightgrey}
-ramp-coreload-2 = ▃
-ramp-coreload-2-font = 5
-ramp-coreload-2-foreground = ${colors.lightgrey}
-ramp-coreload-3 = ▄
-ramp-coreload-3-font = 5
-ramp-coreload-3-foreground = ${colors.lightgrey}
-ramp-coreload-4 = ▅
-ramp-coreload-4-font = 5
-ramp-coreload-4-foreground = ${colors.lightgrey}
-ramp-coreload-5 = ▆
-ramp-coreload-5-font = 5
-ramp-coreload-5-foreground = ${colors.lightgrey}
-ramp-coreload-6 = ▇
-ramp-coreload-6-font = 5
-ramp-coreload-6-foreground = ${colors.lightgrey}
-ramp-coreload-7 = █
-ramp-coreload-7-font = 5
-ramp-coreload-7-foreground = ${colors.lightgrey}
-
-[module/memory]
-type = internal/memory
-
-format = <label> <bar-used>
-format-padding = 2
-format-background = ${colors.lightgrey}
-format-foreground = ${colors.darkgrey}
-
-label = 
-label-font = 3
-
-bar-used-width = 10
-bar-used-indicator = |
-bar-used-indicator-font = 4
-bar-used-indicator-foreground = ${colors.darkgrey}
-bar-used-fill = ─
-bar-used-fill-font = 4
-bar-used-fill-foreground = ${colors.darkgrey}
-bar-used-empty = ─
-bar-used-empty-font = 4
-bar-used-empty-foreground = ${colors.xcolor4}
 
 [module/clock]
 type = internal/date
@@ -190,35 +139,6 @@ label-font = 5
 label-background = ${colors.mediumgrey}
 label-foreground = ${colors.white}
 
-[module/volume]
-type = internal/volume
-
-format-volume = <label-volume> <bar-volume>
-label-volume = 
-label-volume-foreground = ${colors.mediumgrey}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.mediumgrey}
-label-muted =  muted
-label-muted-foreground = ${colors.mediumgrey}
-
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.mediumgrey}
-bar-volume-foreground-1 = ${colors.mediumgrey}
-bar-volume-foreground-2 = ${colors.mediumgrey}
-bar-volume-foreground-3 = ${colors.mediumgrey}
-bar-volume-foreground-4 = ${colors.mediumgrey}
-bar-volume-foreground-5 = ${colors.mediumgrey}
-bar-volume-foreground-6 = ${colors.mediumgrey}
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.mediumgrey}
-
 [module/pkg]
 
 type = custom/script
@@ -234,6 +154,22 @@ format-background = ${colors.darkgrey}
 format-foreground = ${colors.lightgrey}
 
 exec = .config/polybar/pkg.sh
+
+[module/focus]
+
+type = custom/script
+interval = 0.05
+
+format=<label>
+label = "%output% "
+label-font=5
+label-padding=1
+asdsd
+
+format-background = ${colors.blue}
+format-foreground = ${colors.lightblue}
+
+exec=.config/polybar/focused.py
 
 [module/pipe]
 type = custom/text

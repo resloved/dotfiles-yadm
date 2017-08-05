@@ -2,7 +2,7 @@
 xterm*termName: xterm
 
 xterm*faceName: Office Code Pro
-xterm*faceSize: 10
+xterm*faceSize: 8
 
 !border
 xterm*borderWidth: 0
