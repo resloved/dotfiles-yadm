@@ -149,7 +149,7 @@ format-foreground = ${colors.lightgrey}
 
 [module/scroll]
 type = custom/script
-interval = 0.005
+interval = 0.0001
 
 label = %output:0:150:...%
 label-font = 5
@@ -294,7 +294,7 @@ content-padding = 1
 [module/focus]
 
 type = custom/script
-interval = 0.05
+interval = 0.1
 
 format = <label>
 
