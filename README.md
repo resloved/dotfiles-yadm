@@ -2,7 +2,7 @@
 
 ## Preview:
 
-![Desktop](https://i.imgur.com/YwKua2q.png)
+![Desktop](https://i.imgur.com/TJNAHt3.png)
 
 ## Dependencies:
 
@@ -16,8 +16,3 @@
 ## Wallpaper:
 
 ![Wallpaper](http://i.imgur.com/QXkeC4r.png)
-
-## TODO:
-
-* Perfect terminal colors
-* Proper powerline config files
